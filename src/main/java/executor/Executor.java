@@ -1,11 +1,11 @@
 package executor;
 
-import operations.operationsOnUsers;
-import operations.operationsRandom;
+import operations.Generate;
+import operations.Operation;
 
 public class Executor {
     public static void start() {
-        operationsOnUsers.execute();
-        operationsRandom.execute();
+        Operation.execute();
+        Generate.execute();
     }
 }
