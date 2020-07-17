@@ -5,16 +5,17 @@ import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class operationsRandom {
+public class Generate {
+    static Random random = new Random();
     public static void execute() {
         System.out.println("wait few seconds...");
-        List<Integer> list = new Random().ints()
+        List<Integer> list = random.ints()
                 .filter(o -> o > 0 && o < 100).limit(15).boxed().collect(Collectors.toList());
         System.out.println("Random list: " + list);
         printMax(list);
         printMin(list);
-        printAliquot(list);
-        printNumberPlusTen(list);
+        printAliquot(list,2);
+        printNumberIncrease(list,10);
     }
 
     private static void printMax(List<Integer> list) {
@@ -29,14 +30,14 @@ public class operationsRandom {
         System.out.println("MIN: " + min);
     }
 
-    private static void printAliquot(List<Integer> list) {
+    private static void printAliquot(List<Integer> list, int num) {
         List<Integer> aliquot = list.stream()
-                .filter(x -> x % 2 == 0).collect(Collectors.toList());
+                .filter(x -> x % num == 0).collect(Collectors.toList());
         System.out.println("ALIQUOT: " + aliquot);
     }
 
-    private static void printNumberPlusTen(List<Integer> list) {
-        List<Integer> increase = list.stream().map(x -> x + 10).collect(Collectors.toList());
+    private static void printNumberIncrease(List<Integer> list,int num) {
+        List<Integer> increase = list.stream().map(x -> x + num).collect(Collectors.toList());
         System.out.println("INCREASE on 10: " + increase);
     }
 }
